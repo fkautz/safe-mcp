@@ -3,9 +3,9 @@
 ## Overview
 **Tactic**: Initial Access (ATK-TA0001)  
 **Technique ID**: SAFE-T1002  
-**Severity**: High  
+**Severity**: Critical  
 **First Observed**: March 2024 (Discovered via namesquatting attacks on Hugging Face AI model repositories)  
-**Last Updated**: 2025-07-15
+**Last Updated**: 2025-07-19
 
 ## Description
 Supply Chain Compromise is a technique where adversaries tamper with MCP server packages, dependencies, or build processes to distribute backdoored or malicious versions through legitimate channels. This exploits the trust users place in package repositories and supply chains, enabling initial access when compromised components are installed and executed in MCP environments.
@@ -198,6 +198,14 @@ tags:
 - Changes in MCP tool lists post-update without user intervention
 - Anomalous resource usage from newly installed components
 
+### Detection Enhancements
+
+1. **Behavioral baselines per package manager**: Different package managers (Yarn Berry, Poetry, PDM) have distinct lock-file semantics. Flag installations that bypass lock enforcement or exhibit unusual resolution patterns for each package manager type.
+
+2. **Runtime egress scoring**: Immediately after package installation, monitor and score outbound traffic. Flag connections to low-reputation IPs that exceed X standard deviations from the baseline egress pattern for similar packages.
+
+3. **SBOM delta diff**: Compare the signed SBOM generated at build-time against the runtime SBOM using CycloneDX 1.6 with evidence extensions. This can detect unexpected artifacts or modifications that occurred between build and deployment.
+
 ## Mitigation Strategies
 
 ### Preventive Controls
@@ -246,11 +254,8 @@ fi
 ### Hugging Face Namesquatting Attack (March 2024)
 [Protect AI Research](https://protectai.com/threat-research/unveiling-ai-supply-chain-attacks-on-hugging-face): Attackers uploaded malicious models under similar names, leading to backdoor execution in AI pipelines. Impact: Code execution on user systems.
 
-### mcp-remote Package Vulnerability Exploitation (June 2025)
-[JFrog Disclosure](https://jfrog.com/blog/2025-6514-critical-mcp-remote-rce-vulnerability/): While a vulnerability (CVE-2025-6514), it enabled supply chain-like attacks via untrusted packages, affecting 437,000+ downloads. Impact: Remote code execution on LLM clients.
-
-### MCP Inspector Supply Chain Breach (June 2025)
-[Oligo Security](https://www.oligo.security/blog/critical-rce-vulnerability-in-anthropic-mcp-inspector-cve-2025-49596): Compromised build process led to distribution of tainted inspector tools, enabling browser-based RCE (CVSS 9.4).
+### mcp-remote Package Vulnerability (July 2025)
+[JFrog Disclosure](https://jfrog.com/blog/2025-6514-critical-mcp-remote-rce-vulnerability/): Critical RCE vulnerability (CVE-2025-6514, CVSS 9.6) disclosed July 9, 2025. When mcp-remote connects to untrusted servers, it enables OS command injection. While primarily a software vulnerability, malicious packages could exploit this by forcing connections to attacker-controlled servers. Affected 437,000+ downloads before fix in v0.1.16.
 
 ## Sub-Techniques
 
