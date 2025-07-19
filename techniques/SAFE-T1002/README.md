@@ -28,6 +28,8 @@ Adversaries leverage differences in build environments, repository access contro
 
 ### Attack Flow
 
+The following diagram illustrates the supply chain compromise attack flow, showing how adversaries inject malicious code into the software supply chain and how it propagates to victim environments. The flow consists of five stages: Initial compromise, Distribution, Installation, Exploitation, and Post-exploitation. Adversary actions (shown in red) include injecting malware and uploading backdoored packages, while victim environment actions (shown in green) include installation and subsequent exploitation.
+
 ```mermaid
 flowchart TD
     A[Initial Stage: Compromise Supply Chain Element] --> B[Distribution: Make Compromised Package Available]
