@@ -290,6 +290,7 @@ Tampering with upstream libraries to propagate malice through dependency trees.
 |---------|------|---------|--------|
 | 1.0 | 2025-07-15 | Initial documentation | Frederick Kautz |
 | 1.1 | 2025-07-15 | Incorporated SLSA and NIST SP 800-204D guidance into mitigations and current status | Frederick Kautz |
+| 1.2 | 2025-07-19 | Updated severity to Critical, fixed mcp-remote CVE date, removed non-supply-chain CVE, added detection enhancements, improved diagram accessibility | Frederick Kautz |
 
 ## Contributing
 Submit updates, new incidents, or mitigations via GitHub issues/PRs at [fkautz/safe-mcp]. Ensure claims are verified with sources.
