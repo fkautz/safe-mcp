@@ -64,28 +64,42 @@ This technique leverages the fundamental communication mechanisms that enable ag
 
 According to recent academic research from [Triedman et al.](https://arxiv.org/abs/2503.12188) and [Khan et al.](https://arxiv.org/abs/2504.00218), as well as additional research sources, sophisticated variations include:
 
-1. **Control-Flow Hijacking**: Research demonstrates that adversarial content can hijack control and communication within multi-agent systems to invoke unsafe agents and functionalities, resulting in complete security breaches including execution of arbitrary malicious code ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
-2. **Permutation-Invariant Evasion**: Graph-based optimization attacks that distribute prompts across network topologies to bypass distributed safety mechanisms, achieving up to 7x improvement over conventional attacks ([Khan et al., 2025](https://arxiv.org/abs/2504.00218))
-3. **Agent-in-the-Middle (AiTM) with Reflection**: LLM-powered adversarial agents that generate contextually-aware malicious instructions and adapt based on target responses
-4. **Infectious Malicious Prompts**: Self-replicating instructions that spread between agents via multi-hop propagation, creating exponential infection patterns across agent networks
-5. **Distributed Safety Bypass**: Attacks succeed even if individual agents are not susceptible to direct or indirect prompt injection and refuse to perform harmful actions ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
+1. **Control-Flow Hijacking**: Research demonstrates that adversarial content can hijack control and communication within multi-agent systems to invoke unsafe agents and functionalities, resulting in complete security breaches including execution of arbitrary malicious code ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188)). These attacks can trigger **arbitrary code execution across workflows**, compromising entire business processes through single prompt injection points.
+
+2. **Permutation-Invariant Evasion**: Graph-based optimization attacks that distribute prompts across network topologies to bypass distributed safety mechanisms, achieving up to 7x improvement over conventional attacks ([Khan et al., 2025](https://arxiv.org/abs/2504.00218)). These **graph-based evasions** exploit the network structure itself to find optimal attack paths through agent communication channels.
+
+3. **Multi-Hop Propagation Attacks**: Advanced techniques that leverage **multi-hop propagation** mechanisms to spread malicious instructions across agent networks, with research showing that **per-agent defenses fail** in distributed LLM environments ([Khan et al., 2025](https://arxiv.org/abs/2504.00218)). Attackers can traverse multiple agent boundaries to reach high-value targets.
+
+4. **Prompt Propagation via Trust Chains**: Research reveals how attackers exploit **inter-agent trust chains** to manipulate system integrity through communication channels ([Zheng et al., 2025](https://arxiv.org/abs/2506.04572)). These attacks demonstrate **integrity attacks in multi-agent systems** that can corrupt decision-making processes across entire agent networks.
+
+5. **Agent-in-the-Middle (AiTM) with Reflection**: LLM-powered adversarial agents that generate contextually-aware malicious instructions and adapt based on target responses. Enhanced techniques include **reflection-based prompt attacks** that manipulate downstream agent behavior via intercepted messages ([He et al., 2025](https://arxiv.org/abs/2502.14847)).
+
+6. **Infectious Malicious Prompts**: Self-replicating instructions that spread between agents via multi-hop propagation, creating exponential infection patterns across agent networks. Research highlights **distributed risk propagation** and the challenge of containing infections in collaborative agent environments ([Peigne-Lefebvre et al., 2025](https://arxiv.org/abs/2502.19145)).
+
+7. **Distributed Safety Bypass**: Attacks succeed even if individual agents are not susceptible to direct or indirect prompt injection and refuse to perform harmful actions ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188)). This represents a fundamental challenge where system-level security emerges from agent-level interactions rather than individual protections.
 
 ## Impact Assessment
-- **Confidentiality**: Critical - Cross-agent communication can expose all connected systems and sensitive data
-- **Integrity**: Critical - Compromised agents corrupt business processes and decision-making across multi-agent workflows
-- **Availability**: High - Coordinated agent actions can cause denial of service and system instability
-- **Scope**: Network-wide - Single compromise can lead to enterprise-wide agent network infiltration
+- **Confidentiality**: Critical - Cross-agent communication can expose all connected systems and sensitive data. Research demonstrates that **arbitrary code execution across workflows** can lead to complete data exposure across multi-agent environments ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
+- **Integrity**: Critical - Compromised agents corrupt business processes and decision-making across multi-agent workflows. Studies show **integrity attacks in multi-agent systems** can manipulate system-wide decision processes through trust chain exploitation ([Zheng et al., 2025](https://arxiv.org/abs/2506.04572))
+- **Availability**: High - Coordinated agent actions can cause denial of service and system instability. **Distributed risk propagation** can lead to cascading failures across agent networks ([Peigne-Lefebvre et al., 2025](https://arxiv.org/abs/2502.19145))
+- **Scope**: Network-wide - Single compromise can lead to enterprise-wide agent network infiltration. Research confirms that **per-agent defenses fail** in distributed environments, enabling **multi-hop propagation** attacks ([Khan et al., 2025](https://arxiv.org/abs/2504.00218))
 
 ### Current Status (2025)
 According to recent academic research, these attacks pose significant risks to pragmatic multi-agent systems with constraints such as limited token bandwidth, latency between message delivery, and existing defense mechanisms. Research shows that current defenses, including variants of Llama-Guard and PromptGuard, fail to prevent these attacks ([Khan et al., 2025](https://arxiv.org/abs/2504.00218)), emphasizing the urgent need for multi-agent specific safety mechanisms.
 
+Critical research findings indicate:
+- **Systematic defense failures**: Current **per-agent defenses fail** when attackers use **distributed risk propagation** across agent networks ([Khan et al., 2025](https://arxiv.org/abs/2504.00218); [Peigne-Lefebvre et al., 2025](https://arxiv.org/abs/2502.19145))
+- **Arbitrary code execution reality**: Multiple studies demonstrate **arbitrary code execution across workflows** is achievable through prompt injection in multi-agent environments ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
+- **Trust chain vulnerabilities**: Research reveals fundamental weaknesses in **inter-agent trust chains** that enable **integrity attacks** across distributed systems ([Zheng et al., 2025](https://arxiv.org/abs/2506.04572))
+- **Advanced evasion techniques**: **Graph-based evasions** and **reflection-based attacks** represent sophisticated threat evolution requiring new defensive approaches ([Khan et al., 2025](https://arxiv.org/abs/2504.00218); [He et al., 2025](https://arxiv.org/abs/2502.14847))
+
 Organizations are beginning to implement mitigations including:
-- Zero trust authentication for agent communications (as deployed by enterprise security platforms like Astha.ai)
+- Zero trust authentication for agent communications using cryptographic verification protocols
 - Agent behavior monitoring and anomaly detection systems
 - Communication isolation and sandboxing approaches
-- Cryptographic verification of agent identities using protocols like AZTP
+- Cryptographic verification of agent identities and message integrity
 
-However, new attack vectors continue to emerge as multi-agent systems become more prevalent in enterprise environments.
+However, new attack vectors continue to emerge as multi-agent systems become more prevalent in enterprise environments. The research consensus indicates that traditional security measures designed for single-agent systems are insufficient for distributed multi-agent threats.
 
 ## Detection Methods
 
@@ -95,6 +109,10 @@ However, new attack vectors continue to emerge as multi-agent systems become mor
 - Agent identity mismatches in communication headers or metadata
 - Multiple agents showing similar anomalous behaviors simultaneously
 - Suspicious similarity between agent names or identifiers (typosquatting patterns)
+- **Multi-hop propagation signatures**: Unusual message forwarding patterns indicating **distributed risk propagation** ([Khan et al., 2025](https://arxiv.org/abs/2504.00218))
+- **Trust chain anomalies**: Unexpected agent-to-agent trust relationship exploitation patterns ([Zheng et al., 2025](https://arxiv.org/abs/2506.04572))
+- **Reflection-based attack patterns**: Agent responses that show adaptation to previous interactions, indicating **AiTM with reflection** techniques ([He et al., 2025](https://arxiv.org/abs/2502.14847))
+- **Code execution signatures**: Evidence of **arbitrary code execution across workflows** triggered by agent interactions ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
 
 ### Detection Rules
 
@@ -158,6 +176,10 @@ tags:
 - Unexpected agent-to-agent authentication attempts or failures
 - Multiple agents requesting access to similar sensitive resources simultaneously
 - Coordinated agent behaviors that weren't explicitly programmed
+- **Cascading behavioral changes**: Evidence of **infectious malicious prompts** spreading through agent networks ([Peigne-Lefebvre et al., 2025](https://arxiv.org/abs/2502.19145))
+- **Trust exploitation patterns**: Agents leveraging **inter-agent trust chains** to access unauthorized resources ([Zheng et al., 2025](https://arxiv.org/abs/2506.04572))
+- **Graph-based evasion behaviors**: Agents following unusual communication paths that suggest **permutation-invariant evasion** techniques ([Khan et al., 2025](https://arxiv.org/abs/2504.00218))
+- **Workflow hijacking indicators**: Evidence of **control-flow hijacking** where agent execution deviates from intended business processes ([Triedman et al., 2025](https://arxiv.org/abs/2503.12188))
 
 ## Mitigation Strategies
 
@@ -167,7 +189,7 @@ tags:
 3. **[SAFE-M-5: Content Sanitization](../../mitigations/SAFE-M-5/README.md)**: Filter agent communication content for injection patterns and suspicious instructions
 4. **[SAFE-M-11: Behavioral Monitoring](../../mitigations/SAFE-M-11/README.md)**: Monitor agent interaction patterns for anomalies and unusual communication flows
 5. **[SAFE-M-12: Audit Logging](../../mitigations/SAFE-M-12/README.md)**: Comprehensive logging of inter-agent communications with message content analysis
-6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using protocols like AZTP (Conceptual - specific mitigation ID TBD)
+6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using standardized authentication protocols (Conceptual - specific mitigation ID TBD)
 7. **Agent Communication Isolation**: Sandbox agent-to-agent communications to prevent lateral spread of malicious instructions (Conceptual - specific mitigation ID TBD)
 8. **Agent Namespace Management**: Prevent agent name squatting through centralized registration and verification controls (Conceptual - specific mitigation ID TBD)
 
@@ -181,10 +203,10 @@ tags:
 
 ### Implementation Examples
 
-**AZTP Protocol Integration**:
+**Zero Trust Protocol Integration**:
 ```yaml
 agent_identity:
-  protocol: "aztp"
+  protocol: "oauth2_pkce"
   verification: "cryptographic"
   namespace: "domain-verified"
   trust_model: "zero-trust"
@@ -220,13 +242,13 @@ inter_agent_policy:
 - [SAFE-T1704](../SAFE-T1704/README.md): Compromised-Server Pivot - Similar pivot attack methodology
 
 ## References
-- [Red-Teaming LLM Multi-Agent Systems via Communication Attacks - He et al., ACL 2025](https://arxiv.org/abs/2502.14847)
-- [Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities - Peigne-Lefebvre et al., AAAI 2025](https://arxiv.org/abs/2502.19145)
-- [Demonstrations of Integrity Attacks in Multi-Agent Systems - Zheng et al., 2025](https://arxiv.org/abs/2506.04572)
-- [Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems - Khan et al., 2025](https://arxiv.org/abs/2504.00218)
-- [Multi-Agent Systems Execute Arbitrary Malicious Code - Triedman et al., 2025](https://arxiv.org/abs/2503.12188)
-- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Model Context Protocol Specification](https://modelcontextprotocol.io/specification)
+- [Multi-Agent Systems Execute Arbitrary Malicious Code - Triedman et al., 2025](https://arxiv.org/abs/2503.12188) - Demonstrates how prompt injection in one agent can trigger **control-flow hijacking** and **arbitrary code execution** across multi-agent workflows.
+- [Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems - Khan et al., 2025](https://arxiv.org/abs/2504.00218) - Introduces **multi-hop propagation**, **graph-based evasions**, and the **failure of per-agent defenses** in distributed LLM environments.
+- [Demonstrations of Integrity Attacks in Multi-Agent Systems - Zheng et al., 2025](https://arxiv.org/abs/2506.04572) - Explores **prompt propagation via inter-agent trust chains**, showing how attackers can **manipulate system integrity** through communication.
+- [Red-Teaming LLM Multi-Agent Systems via Communication Attacks - He et al., ACL 2025](https://arxiv.org/abs/2502.14847) - Describes **Agent-in-the-Middle (AiTM)** and **reflection-based prompt attacks** that manipulate downstream agent behavior via intercepted messages.
+- [Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities - Peigne-Lefebvre et al., AAAI 2025](https://arxiv.org/abs/2502.19145) - Proposes a **taxonomy of multi-agent threats** and mitigation strategies, highlighting **distributed risk propagation** and agent network infection.
+- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) - Highlights risks of **insecure output handling** and **prompt injection**, both of which underpin **instruction relay attacks** across agent boundaries.
+- [Model Context Protocol Specification](https://modelcontextprotocol.io/specification) - Provides the **inter-agent communication standard** used in many agentic LLM systems, including messaging structures vulnerable to prompt injection if not guarded by trust policies.
 
 ## MITRE ATT&CK Mapping
 - [T1557 - Adversary-in-the-Middle](https://attack.mitre.org/techniques/T1557/) - Intercepting and manipulating inter-agent communications
@@ -237,4 +259,4 @@ inter_agent_policy:
 ## Version History
 | Version | Date | Changes | Author |
 |---------|------|---------|--------|
-| 1.0 | 2025-07-24 | Initial documentation based on academic research (Triedman et al., Khan et al.) and conceptual analysis, with Astha.ai industry insights | Arjun Subedi (Astha.ai Security Research Team) | 
+| 1.0 | 2025-07-24 | Initial documentation based on academic research (Triedman et al., Khan et al.) and conceptual analysis | Arjun Subedi (Astha.ai Security Research Team) | 
