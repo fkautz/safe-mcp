@@ -162,18 +162,18 @@ tags:
 ## Mitigation Strategies
 
 ### Preventive Controls
-1. **[SAFE-M-1: Architectural Defense](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-1)**: Implement control/data flow separation for agent communications to prevent instruction injection
-2. **[SAFE-M-3: AI-Powered Content Analysis](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-3)**: Scan inter-agent messages for malicious instructions and hidden directives
-3. **[SAFE-M-5: Content Sanitization](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-5)**: Filter agent communication content for injection patterns and suspicious instructions
-4. **[SAFE-M-11: Behavioral Monitoring](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11)**: Monitor agent interaction patterns for anomalies and unusual communication flows
-5. **[SAFE-M-12: Audit Logging](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12)**: Comprehensive logging of inter-agent communications with message content analysis
+1. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-1" target="_blank">SAFE-M-1: Architectural Defense</a>**: Implement control/data flow separation for agent communications to prevent instruction injection
+2. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-3" target="_blank">SAFE-M-3: AI-Powered Content Analysis</a>**: Scan inter-agent messages for malicious instructions and hidden directives
+3. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-5" target="_blank">SAFE-M-5: Content Sanitization</a>**: Filter agent communication content for injection patterns and suspicious instructions
+4. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11" target="_blank">SAFE-M-11: Behavioral Monitoring</a>**: Monitor agent interaction patterns for anomalies and unusual communication flows
+5. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12" target="_blank">SAFE-M-12: Audit Logging</a>**: Comprehensive logging of inter-agent communications with message content analysis
 6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using protocols like AZTP (Conceptual - specific mitigation ID TBD)
 7. **Agent Communication Isolation**: Sandbox agent-to-agent communications to prevent lateral spread of malicious instructions (Conceptual - specific mitigation ID TBD)
 8. **Agent Namespace Management**: Prevent agent name squatting through centralized registration and verification controls (Conceptual - specific mitigation ID TBD)
 
 ### Detective Controls
-1. **[SAFE-M-11: Behavioral Monitoring](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11)**: Monitor agent interaction patterns for anomalies and unusual communication flows
-2. **[SAFE-M-12: Audit Logging](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12)**: Comprehensive logging of inter-agent communications with message content analysis
+1. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11" target="_blank">SAFE-M-11: Behavioral Monitoring</a>**: Monitor agent interaction patterns for anomalies and unusual communication flows
+2. **<a href="https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12" target="_blank">SAFE-M-12: Audit Logging</a>**: Comprehensive logging of inter-agent communications with message content analysis
 3. **Graph-based Flow Analysis**: Monitor agent communication patterns using graph analysis to detect infection spread
 4. **Anomaly Detection**: ML-based detection of unusual agent behaviors using clustering and pattern recognition
 5. **Communication Monitoring**: Track normal communication patterns per agent and alert on deviations
@@ -214,23 +214,23 @@ inter_agent_policy:
    - Update agent authentication and authorization mechanisms
 
 ## Related Techniques
-- [SAFE-T1001: Tool Poisoning Attack](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1001) - Similar instruction injection approach
-- [SAFE-T1102: Prompt Injection](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1102) - Foundation technique for instruction manipulation
-- [SAFE-T1702: Shared-Memory Poisoning](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1702) - Related lateral movement in multi-agent systems
-- [SAFE-T1704: Compromised-Server Pivot](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1704) - Similar pivot attack methodology
+- <a href="https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1001" target="_blank">SAFE-T1001: Tool Poisoning Attack</a> - Similar instruction injection approach
+- <a href="https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1102" target="_blank">SAFE-T1102: Prompt Injection</a> - Foundation technique for instruction manipulation
+- <a href="https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1702" target="_blank">SAFE-T1702: Shared-Memory Poisoning</a> - Related lateral movement in multi-agent systems
+- <a href="https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1704" target="_blank">SAFE-T1704: Compromised-Server Pivot</a> - Similar pivot attack methodology
 
 ## References
-- [Red-Teaming LLM Multi-Agent Systems via Communication Attacks - He et al., ACL 2025](https://arxiv.org/abs/2502.14847)
-- [Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities - Peigne-Lefebvre et al., AAAI 2025](https://arxiv.org/abs/2502.19145)
-- [Demonstrations of Integrity Attacks in Multi-Agent Systems - Zheng et al., 2025](https://arxiv.org/abs/2506.04572)
-- [Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems - Khan et al., 2025](https://arxiv.org/abs/2504.00218)
-- [Multi-Agent Systems Execute Arbitrary Malicious Code - Triedman et al., 2025](https://arxiv.org/abs/2503.12188)
-- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-- [Model Context Protocol Specification](https://modelcontextprotocol.io/specification)
+- <a href="https://arxiv.org/abs/2502.14847" target="_blank">Red-Teaming LLM Multi-Agent Systems via Communication Attacks - He et al., ACL 2025</a>
+- <a href="https://arxiv.org/abs/2502.19145" target="_blank">Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities - Peigne-Lefebvre et al., AAAI 2025</a>
+- <a href="https://arxiv.org/abs/2506.04572" target="_blank">Demonstrations of Integrity Attacks in Multi-Agent Systems - Zheng et al., 2025</a>
+- <a href="https://arxiv.org/abs/2504.00218" target="_blank">Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems - Khan et al., 2025</a>
+- <a href="https://arxiv.org/abs/2503.12188" target="_blank">Multi-Agent Systems Execute Arbitrary Malicious Code - Triedman et al., 2025</a>
+- <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank">OWASP Top 10 for Large Language Model Applications</a>
+- <a href="https://modelcontextprotocol.io/specification" target="_blank">Model Context Protocol Specification</a>
 
 ## MITRE ATT&CK Mapping
-- [T1557 - Adversary-in-the-Middle](https://attack.mitre.org/techniques/T1557/) - Intercepting and manipulating inter-agent communications
-- [T1036.005 - Masquerading: Match Legitimate Name or Location](https://attack.mitre.org/techniques/T1036/005/) - Agent name spoofing and typosquatting attacks
+- <a href="https://attack.mitre.org/techniques/T1557/" target="_blank">T1557 - Adversary-in-the-Middle</a> - Intercepting and manipulating inter-agent communications
+- <a href="https://attack.mitre.org/techniques/T1036/005/" target="_blank">T1036.005 - Masquerading: Match Legitimate Name or Location</a> - Agent name spoofing and typosquatting attacks
 
 **Note**: Cross-agent instruction injection represents a novel attack vector specific to multi-agent AI systems. While some aspects map to existing MITRE techniques, the full scope of this technique may require new classifications as the framework evolves.
 
