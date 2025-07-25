@@ -225,12 +225,8 @@ inter_agent_policy:
 - [Demonstrations of Integrity Attacks in Multi-Agent Systems - Zheng et al., 2025](https://arxiv.org/abs/2506.04572)
 - [Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems - Khan et al., 2025](https://arxiv.org/abs/2504.00218)
 - [Multi-Agent Systems Execute Arbitrary Malicious Code - Triedman et al., 2025](https://arxiv.org/abs/2503.12188)
-- [Agents Under Siege: Breaking Pragmatic Multi-Agent LLM Systems with Optimized Prompt Attacks - Khan et al., 2025](https://arxiv.org/abs/2504.00218)
-- [Red-Teaming LLM Multi-Agent Systems via Communication Attacks - Conceptual Research](https://arxiv.org/abs/2502.14847)
-- [Multi-Agent Security Tax: Trading Off Security and Collaboration Capabilities - Conceptual Research](https://arxiv.org/abs/2502.19145)
 - [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 - [Model Context Protocol Specification](https://modelcontextprotocol.io/specification)
-- [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 
 ## MITRE ATT&CK Mapping
 - [T1557 - Adversary-in-the-Middle](https://attack.mitre.org/techniques/T1557/) - Intercepting and manipulating inter-agent communications
