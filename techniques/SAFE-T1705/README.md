@@ -191,7 +191,7 @@ tags:
 5. **[SAFE-M-12: Audit Logging](../../mitigations/SAFE-M-12/README.md)**: Comprehensive logging of inter-agent communications with message content analysis
 6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using standardized authentication protocols (Conceptual - specific mitigation ID TBD)
 7. **Agent Communication Isolation**: Sandbox agent-to-agent communications to prevent lateral spread of malicious instructions (Conceptual - specific mitigation ID TBD)
-8. **Agent Namespace Management**: Prevent agent name squatting through centralized registration and verification controls (Conceptual - specific mitigation ID TBD)
+8. **Agent Namespace Management**: Prevent agent name squatting through decentralized registration and verification controls using consensus mechanisms, cryptographic proof-of-identity, and distributed reputation systems to ensure legitimate agent identity registration without single points of failure (Conceptual - specific mitigation ID TBD)
 
 ### Detective Controls
 1. **[SAFE-M-11: Behavioral Monitoring](../../mitigations/SAFE-M-11/README.md)**: Monitor agent interaction patterns for anomalies and unusual communication flows
@@ -219,6 +219,58 @@ inter_agent_policy:
   routing_verification: "cryptographic"
   message_signing: "required"
   reflection_controls: "enabled"
+```
+
+**Decentralized Agent Registration**:
+```yaml
+agent_namespace:
+  registration_type: "decentralized"
+  consensus_mechanism: "byzantine_fault_tolerant"
+  verification_network: "distributed_hash_table"
+  anti_squatting:
+    identity_verification: "cryptographic_signature"
+    reputation_threshold: "configurable_trust_score"
+    challenge_response: "enabled"
+    similarity_detection: "enabled"
+  
+# Example: Blockchain-based Agent Identity
+agent_identity_chain:
+  network: "distributed_identity_network"
+  identity_hash: "sha256(agent_name + public_key + metadata)"
+  registration_proof:
+    signature: "ed25519_signature"
+    timestamp: "block_timestamp"
+    consensus_votes: "minimum_3_of_5_validators"
+  
+# Example: Distributed Hash Table Registration
+dht_registration:
+  key: "keccak256(agent_name)"
+  value:
+    public_key: "ed25519_public_key"
+    capabilities: ["communication", "data_processing"]
+    reputation_score: "network_derived_score"
+    registration_timestamp: "unix_timestamp"
+    verification_proofs: ["cryptographic_attestations"]
+```
+
+**Anti-Squatting Mechanisms**:
+```yaml
+name_verification:
+  similarity_detection:
+    algorithm: "levenshtein_distance"
+    threshold: "edit_distance_2"
+    phonetic_matching: "soundex_algorithm"
+  
+  registration_requirements:
+    proof_of_identity: "cryptographic_signature"
+    proof_of_legitimacy: "domain_verification_or_reputation"
+    proof_of_activity: "minimum_interaction_history"
+    
+  consensus_validation:
+    validator_nodes: "distributed_network"
+    approval_threshold: "byzantine_fault_tolerant_majority"
+    challenge_period: "configurable_timeframe"
+    dispute_resolution: "cryptographic_proof_verification"
 ```
 
 ### Response Procedures
