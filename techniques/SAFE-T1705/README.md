@@ -162,18 +162,18 @@ tags:
 ## Mitigation Strategies
 
 ### Preventive Controls
-1. **[SAFE-M-1: Architectural Defense](../../mitigations/SAFE-M-1/README.md)**: Implement control/data flow separation for agent communications to prevent instruction injection
-2. **[SAFE-M-3: AI-Powered Content Analysis](../../mitigations/SAFE-M-3/README.md)**: Scan inter-agent messages for malicious instructions and hidden directives
-3. **[SAFE-M-5: Content Sanitization](../../mitigations/SAFE-M-5/README.md)**: Filter agent communication content for injection patterns and suspicious instructions
-4. **[SAFE-M-11: Behavioral Monitoring](../../mitigations/SAFE-M-11/README.md)**: Monitor agent interaction patterns for anomalies and unusual communication flows
-5. **[SAFE-M-12: Audit Logging](../../mitigations/SAFE-M-12/README.md)**: Comprehensive logging of inter-agent communications with message content analysis
+1. **[SAFE-M-1: Architectural Defense](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-1)**: Implement control/data flow separation for agent communications to prevent instruction injection
+2. **[SAFE-M-3: AI-Powered Content Analysis](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-3)**: Scan inter-agent messages for malicious instructions and hidden directives
+3. **[SAFE-M-5: Content Sanitization](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-5)**: Filter agent communication content for injection patterns and suspicious instructions
+4. **[SAFE-M-11: Behavioral Monitoring](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11)**: Monitor agent interaction patterns for anomalies and unusual communication flows
+5. **[SAFE-M-12: Audit Logging](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12)**: Comprehensive logging of inter-agent communications with message content analysis
 6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using protocols like AZTP (Conceptual - specific mitigation ID TBD)
 7. **Agent Communication Isolation**: Sandbox agent-to-agent communications to prevent lateral spread of malicious instructions (Conceptual - specific mitigation ID TBD)
 8. **Agent Namespace Management**: Prevent agent name squatting through centralized registration and verification controls (Conceptual - specific mitigation ID TBD)
 
 ### Detective Controls
-1. **[SAFE-M-11: Behavioral Monitoring](../../mitigations/SAFE-M-11/README.md)**: Monitor agent interaction patterns for anomalies and unusual communication flows
-2. **[SAFE-M-12: Audit Logging](../../mitigations/SAFE-M-12/README.md)**: Comprehensive logging of inter-agent communications with message content analysis
+1. **[SAFE-M-11: Behavioral Monitoring](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-11)**: Monitor agent interaction patterns for anomalies and unusual communication flows
+2. **[SAFE-M-12: Audit Logging](https://github.com/fkautz/safe-mcp/tree/main/mitigations/SAFE-M-12)**: Comprehensive logging of inter-agent communications with message content analysis
 3. **Graph-based Flow Analysis**: Monitor agent communication patterns using graph analysis to detect infection spread
 4. **Anomaly Detection**: ML-based detection of unusual agent behaviors using clustering and pattern recognition
 5. **Communication Monitoring**: Track normal communication patterns per agent and alert on deviations
@@ -214,10 +214,10 @@ inter_agent_policy:
    - Update agent authentication and authorization mechanisms
 
 ## Related Techniques
-- [SAFE-T1001](../SAFE-T1001/README.md): Tool Poisoning Attack - Similar instruction injection approach
-- [SAFE-T1102](../SAFE-T1102/README.md): Prompt Injection - Foundation technique for instruction manipulation
-- [SAFE-T1702](../SAFE-T1702/README.md): Shared-Memory Poisoning - Related lateral movement in multi-agent systems
-- [SAFE-T1704](../SAFE-T1704/README.md): Compromised-Server Pivot - Similar pivot attack methodology
+- [SAFE-T1001: Tool Poisoning Attack](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1001) - Similar instruction injection approach
+- [SAFE-T1102: Prompt Injection](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1102) - Foundation technique for instruction manipulation
+- [SAFE-T1702: Shared-Memory Poisoning](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1702) - Related lateral movement in multi-agent systems
+- [SAFE-T1704: Compromised-Server Pivot](https://github.com/fkautz/safe-mcp/tree/main/techniques/SAFE-T1704) - Similar pivot attack methodology
 
 ## References
 - [Red-Teaming LLM Multi-Agent Systems via Communication Attacks - He et al., ACL 2025](https://arxiv.org/abs/2502.14847)
