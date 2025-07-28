@@ -191,7 +191,6 @@ tags:
 5. **[SAFE-M-12: Audit Logging](../../mitigations/SAFE-M-12/README.md)**: Comprehensive logging of inter-agent communications with message content analysis
 6. **Zero Trust Agent Authentication**: Implement cryptographic verification of agent identities using standardized authentication protocols (Conceptual - specific mitigation ID TBD)
 7. **Agent Communication Isolation**: Sandbox agent-to-agent communications to prevent lateral spread of malicious instructions (Conceptual - specific mitigation ID TBD)
-8. **Agent Namespace Management**: Prevent agent name squatting through decentralized registration and verification controls using consensus mechanisms, cryptographic proof-of-identity, and distributed reputation systems to ensure legitimate agent identity registration without single points of failure (Conceptual - specific mitigation ID TBD)
 
 ### Detective Controls
 1. **[SAFE-M-11: Behavioral Monitoring](../../mitigations/SAFE-M-11/README.md)**: Monitor agent interaction patterns for anomalies and unusual communication flows
