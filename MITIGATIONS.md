@@ -51,8 +51,8 @@ SAFE-MCP mitigations are security controls designed to protect Model Context Pro
 | [SAFE-M-21](mitigations/SAFE-M-21/README.md) | Output Context Isolation | Architectural Control | High |
 | [SAFE-M-22](mitigations/SAFE-M-22/README.md) | Semantic Output Validation | Input Validation | Medium-High |
 | [SAFE-M-23](mitigations/SAFE-M-23/README.md) | Tool Output Truncation | Preventive Control | Medium |
-| [SAFE-M-24](mitigations/SAFE-M-24/README.md) | SBOM Generation and Verification | Supply Chain Security | High |
-| [SAFE-M-25](mitigations/SAFE-M-25/README.md) | AI-Specific Risk Modeling | Risk Management | Medium-High |
+| [SAFE-M-24](mitigations/SAFE-M-24/README.md) | AI Code Validation | Input Validation | High |
+| [SAFE-M-25](mitigations/SAFE-M-25/README.md) | AI Code User Confirmation | Human Authorization Control | High |
 | [SAFE-M-26](mitigations/SAFE-M-26/README.md) | Data Provenance Tracking | Data Security | High |
 | [SAFE-M-27](mitigations/SAFE-M-27/README.md) | Social Engineering Awareness Training | Human Factors | Medium |
 | [SAFE-M-28](mitigations/SAFE-M-28/README.md) | Pre-Authentication Tool Concealment | Preventive Control | High |
