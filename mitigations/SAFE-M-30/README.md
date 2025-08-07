@@ -2,7 +2,7 @@
 
 ## Overview
 **Mitigation ID**: SAFE-M-30  
-**Category**: Human Authorization Control  
+**Category**: Preventive Control  
 **Effectiveness**: High  
 **Implementation Complexity**: Low-Medium  
 **First Published**: 2025-08-07
