@@ -1,0 +1,157 @@
+title: MCP Tool-Chaining Pivot Detection
+id: E01B3271-1DA7-4E1A-81DD-D3AD5EA38938
+status: experimental
+description: Detects potential tool-chaining pivot attacks for lateral movement in MCP environments
+author: SAFE-MCP Team
+date: 2025-01-15
+references:
+  - https://github.com/safe-mcp/techniques/SAFE-T1703
+  - https://attack.mitre.org/techniques/T1021/
+  - https://modelcontextprotocol.io/specification
+logsource:
+  category: mcp_tool_execution
+  product: mcp
+detection:
+  # Tool execution with privilege escalation pattern
+  selection_privilege_escalation:
+    EventType: 'tool_execution'
+    PrivilegeChange:
+      - 'low_to_medium'
+      - 'medium_to_high'
+      - 'low_to_high'
+    ExecutionMethod: 'indirect'
+    ChainLength: '>1'
+  
+  # Unusual tool interaction patterns indicating chaining
+  selection_tool_chaining:
+    EventType: 'tool_interaction'
+    SourceTool|endswith:
+      - '_reader'
+      - '_access'
+      - '_basic'
+    DestinationTool|contains:
+      - 'admin_'
+      - 'system_'
+      - 'execute_'
+      - 'manage_'
+    InteractionType: 'data_transfer'
+  
+  # Suspicious data flow between privilege levels
+  selection_data_flow:
+    EventType: 'data_transfer'
+    SourcePrivilege: 'low'
+    DestinationPrivilege: 'high'
+    DataType:
+      - 'commands'
+      - 'credentials'
+      - 'configuration'
+      - 'admin_instructions'
+      - 'system_calls'
+    Validated: false
+  
+  # Rapid tool succession indicating automated chaining
+  selection_automated_chain:
+    EventType: 'tool_sequence'
+    ToolCount: '>3'
+    TimeWindow: '<300'  # Less than 5 minutes
+    PrivilegeProgression: 'ascending'
+    UserInteraction: false
+  
+  # Context pollution indicators
+  selection_context_pollution:
+    EventType: 'context_modification'
+    ModificationType:
+      - 'privilege_injection'
+      - 'trust_elevation'
+      - 'session_hijack'
+    AffectedTools: '>1'
+    Persistence: true
+  
+  # Trust relationship exploitation
+  selection_trust_abuse:
+    EventType: 'trust_validation'
+    ValidationResult: 'bypassed'
+    TrustSource: 'compromised_tool'
+    TrustTarget: 'high_privilege_tool'
+    Method:
+      - 'output_trust'
+      - 'signature_bypass'
+      - 'certificate_spoofing'
+  
+  # Resource-based pivoting
+  selection_resource_pivot:
+    EventType: 'resource_access'
+    AccessPattern: 'cross_privilege'
+    ResourceType:
+      - 'database'
+      - 'file_system'
+      - 'api_endpoint'
+      - 'shared_memory'
+    PivotIndicator: true
+  
+  condition: 
+    selection_privilege_escalation or 
+    selection_tool_chaining or 
+    selection_data_flow or 
+    selection_automated_chain or
+    selection_context_pollution or
+    selection_trust_abuse or
+    selection_resource_pivot
+
+falsepositives:
+  - Legitimate automated workflows requiring multi-tool execution
+  - Administrative scripts using tool sequences for maintenance
+  - Data processing pipelines with necessary privilege escalation
+  - Backup operations requiring access to multiple privilege levels
+  - Scheduled system maintenance using tool combinations
+  - Business process automation with approved tool chains
+
+level: high
+
+tags:
+  - attack.lateral_movement
+  - attack.privilege_escalation
+  - attack.t1021        # Remote Services
+  - attack.t1550        # Use Alternate Authentication Material
+  - attack.t1068        # Exploitation for Privilege Escalation
+  - safe.t1703          # Tool-Chaining Pivot
+
+fields:
+  - ToolSequence
+  - PrivilegeChange
+  - ExecutionChain
+  - DataFlow
+  - TimeWindow
+  - UserContext
+  - TrustRelationship
+  - ResourceAccess
+
+# Advanced detection patterns for sophisticated attacks
+advanced_patterns:
+  # Multi-hop chaining detection
+  multi_hop_chain:
+    ToolSequence|count: '>3'
+    PrivilegeEscalation: 'transitive'
+    HopCount: '>2'
+    FinalPrivilege: 'admin'
+  
+  # Parallel chain convergence
+  parallel_chains:
+    ConcurrentChains: '>1'
+    ConvergencePoint: 'high_privilege_tool'
+    SynchronizationPattern: 'coordinated'
+    TimeWindow: '<600'  # 10 minutes
+  
+  # Recursive tool exploitation
+  recursive_calls:
+    ToolCallPattern: 'recursive'
+    SelfReference: true
+    CircularDependency: true
+    EscalationLoop: true
+  
+  # Session state manipulation
+  session_manipulation:
+    StateModification: true
+    PersistentPrivilege: true
+    CrossToolImpact: '>1'
+    MemoryPoisoning: true

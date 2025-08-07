@@ -1,0 +1,137 @@
+[
+  {
+    "timestamp": "2025-01-15T10:30:15Z",
+    "event_type": "network_connection",
+    "source_ip": "203.0.113.45",
+    "destination_ip": "10.0.1.100",
+    "destination_port": 8080,
+    "protocol": "TCP",
+    "user_agent": "masscan/1.0",
+    "description": "Port scanning attempt targeting common MCP ports"
+  },
+  {
+    "timestamp": "2025-01-15T10:30:45Z", 
+    "event_type": "http_request",
+    "source_ip": "203.0.113.45",
+    "destination_ip": "10.0.1.100",
+    "destination_port": 8080,
+    "method": "GET",
+    "uri": "/sse",
+    "user_agent": "curl/7.68.0",
+    "response_headers": "Content-Type: text/event-stream\nCache-Control: no-cache",
+    "status_code": 200,
+    "description": "MCP endpoint fingerprinting - successful SSE endpoint discovery"
+  },
+  {
+    "timestamp": "2025-01-15T10:31:12Z",
+    "event_type": "mcp_protocol", 
+    "source_ip": "203.0.113.45",
+    "destination_ip": "10.0.1.100",
+    "destination_port": 8080,
+    "method": "POST",
+    "uri": "/message?sessionId=abc123",
+    "content_type": "application/json",
+    "request_body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{},\"clientInfo\":{\"name\":\"Scanner\",\"version\":\"1.0\"}}}",
+    "response_body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"protocolVersion\":\"2024-11-05\",\"capabilities\":{\"tools\":{},\"resources\":{},\"prompts\":{}},\"serverInfo\":{\"name\":\"DatabaseMCP\",\"version\":\"1.2.0\"}}}",
+    "description": "MCP protocol handshake - server identification successful"
+  },
+  {
+    "timestamp": "2025-01-15T10:31:25Z",
+    "event_type": "mcp_protocol",
+    "source_ip": "203.0.113.45", 
+    "destination_ip": "10.0.1.100",
+    "destination_port": 8080,
+    "method": "POST",
+    "uri": "/message?sessionId=abc123",
+    "content_type": "application/json",
+    "request_body": "{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}",
+    "response_body": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"database_query\",\"description\":\"Execute SQL queries on production database\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"query\":{\"type\":\"string\"}}}},{\"name\":\"file_read\",\"description\":\"Read files from server filesystem\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"path\":{\"type\":\"string\"}}}}]}}",
+    "description": "Tool enumeration - discovered database and file access capabilities"
+  },
+  {
+    "timestamp": "2025-01-15T10:31:38Z",
+    "event_type": "mcp_protocol",
+    "source_ip": "203.0.113.45",
+    "destination_ip": "10.0.1.100", 
+    "destination_port": 8080,
+    "method": "POST",
+    "uri": "/message?sessionId=abc123",
+    "content_type": "application/json",
+    "request_body": "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"resources/list\"}",
+    "response_body": "{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":{\"resources\":[{\"uri\":\"database://prod/users\",\"name\":\"User Database\",\"description\":\"Production user database access\"},{\"uri\":\"file:///etc/passwd\",\"name\":\"System Users\",\"description\":\"System user configuration\"}]}}",
+    "description": "Resource enumeration - discovered database and system file access"
+  },
+  {
+    "timestamp": "2025-01-15T10:32:15Z",
+    "event_type": "dns_query",
+    "source_ip": "198.51.100.22",
+    "query_name": "dyn.attacker.com",
+    "query_type": "A",
+    "response": "203.0.113.100",
+    "description": "Initial DNS resolution for potential rebinding attack"
+  },
+  {
+    "timestamp": "2025-01-15T10:32:45Z",
+    "event_type": "dns_query", 
+    "source_ip": "198.51.100.22",
+    "query_name": "dyn.attacker.com",
+    "query_type": "A", 
+    "response": "127.0.0.1",
+    "description": "DNS rebinding - resolution changed to localhost"
+  },
+  {
+    "timestamp": "2025-01-15T10:33:02Z",
+    "event_type": "http_request",
+    "source_ip": "198.51.100.22",
+    "destination_ip": "127.0.0.1",
+    "destination_port": 3000,
+    "method": "GET",
+    "uri": "/sse",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "origin": "http://dyn.attacker.com",
+    "response_headers": "Content-Type: text/event-stream",
+    "status_code": 200,
+    "description": "DNS rebinding attack - localhost MCP server accessed via browser"
+  },
+  {
+    "timestamp": "2025-01-15T10:45:30Z",
+    "event_type": "network_scan",
+    "source_ip": "192.0.2.50", 
+    "scan_type": "TCP_SYN",
+    "target_range": "10.0.0.0/16",
+    "ports_scanned": [8000, 8080, 3000, 5000, 9090, 80],
+    "scan_rate": "20000/sec",
+    "results": {
+      "open_ports": 45,
+      "responsive_hosts": 12,
+      "mcp_candidates": 8
+    },
+    "description": "Large-scale network enumeration targeting MCP infrastructure"
+  },
+  {
+    "timestamp": "2025-01-15T10:47:15Z",
+    "event_type": "automated_enum",
+    "source_ip": "192.0.2.50",
+    "target_hosts": ["10.0.1.100", "10.0.1.105", "10.0.1.110"],
+    "enumeration_script": "mcp_discovery.py",
+    "discoveries": [
+      {
+        "host": "10.0.1.100",
+        "port": 8080,
+        "server_name": "DatabaseMCP",
+        "tools_count": 5,
+        "resources_count": 3,
+        "high_risk_tools": ["database_query", "shell_execute"]
+      },
+      {
+        "host": "10.0.1.105", 
+        "port": 3000,
+        "server_name": "WebScrapingMCP",
+        "tools_count": 8,
+        "resources_count": 2,
+        "high_risk_tools": ["browser_navigate", "file_download"]
+      }
+    ],
+    "description": "Automated MCP server enumeration with capability analysis"
+  }
+]
