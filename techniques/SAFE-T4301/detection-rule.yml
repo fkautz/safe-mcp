@@ -1,0 +1,43 @@
+title: MCP Server Fingerprinting Activity
+id: 7a8b9c2d-3e4f-5a6b-7c8d-9e0f1a2b3c4d
+status: experimental
+description: Detects potential MCP server reconnaissance and fingerprinting attempts
+author: SAFE-MCP Research Team
+date: 2025-01-15
+references:
+  - https://github.com/safe-mcp/techniques/SAFE-T4301
+logsource:
+  product: webserver
+  service: http_access_logs
+detection:
+  selection_sse:
+    request_uri|contains: '/sse'
+    http_method: 'GET'
+  selection_jsonrpc:
+    request_body|contains:
+      - '"jsonrpc":"2.0"'
+      - '"method":"initialize"'
+      - '"protocolVersion"'
+  selection_tools:
+    request_body|contains:
+      - '"method":"tools/list"'
+  selection_scanning:
+    user_agent|contains:
+      - 'masscan'
+      - 'nmap'
+      - 'python-requests'
+      - 'curl'
+    request_uri|contains:
+      - '/mcp'
+      - '/api/mcp'
+      - '/messages'
+  condition: selection_sse or selection_jsonrpc or selection_tools or selection_scanning
+falsepositives:
+  - Legitimate MCP client connections
+  - Authorized penetration testing
+  - Network monitoring tools
+level: medium
+tags:
+  - attack.reconnaissance
+  - attack.t1046
+  - safe.t4301
