@@ -47,7 +47,7 @@ The SAFE-MCP framework defines 14 tactics that align with the MITRE ATT&CK metho
 
 | Tactic ID | Tactic Name | Technique ID | Technique Name | Description |
 |-----------|-------------|--------------|----------------|-------------|
-| **ATK-TA0043** | **Reconnaissance** | | | *No MCP-specific techniques currently documented* |
+| **ATK-TA0043** | **Reconnaissance** | [SAFE-T4301](techniques/SAFE-T4301/README.md) | MCP Server Fingerprinting and Enumeration | Systematic identification and mapping of exposed MCP servers to gather intelligence about target environments |
 | **ATK-TA0042** | **Resource Development** | | | *No MCP-specific techniques currently documented* |
 | **ATK-TA0001** | **Initial Access** | [SAFE-T1001](techniques/SAFE-T1001/README.md) | Tool Poisoning Attack (TPA) | Attackers embed malicious instructions within MCP tool descriptions that are invisible to users but processed by LLMs |
 | ATK-TA0001 | Initial Access | SAFE-T1002 | Supply Chain Compromise | Distribution of backdoored MCP server packages through unofficial repositories or compromised legitimate sources |
@@ -130,14 +130,14 @@ The SAFE-MCP framework defines 14 tactics that align with the MITRE ATT&CK metho
 ## Summary Statistics
 
 - **Total Tactics**: 14
-- **Total Techniques**: 77
-- **Average Techniques per Tactic**: 5.5
+- **Total Techniques**: 78
+- **Average Techniques per Tactic**: 5.6
 
 ## Tactic Distribution
 
 | Tactic | Number of Techniques |
 |--------|---------------------|
-| Reconnaissance | 0 |
+| Reconnaissance | 1 |
 | Resource Development | 0 |
 | Initial Access | 8 |
 | Execution | 7 |
