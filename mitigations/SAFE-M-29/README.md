@@ -225,4 +225,4 @@ def secure_ai_execute(code: str, context: dict) -> Any:
 
 | Version | Date       | Changes                                                | Author      |
 | ------- | ---------- | ------------------------------------------------------ | ----------- |
-| 1.0     | 2025-08-07 | Initial documentation of AI Code Validation mitigation | bishnubista |
+| 1.0     | 2025-08-13 | Initial documentation of AI Code Validation mitigation | bishnubista |
