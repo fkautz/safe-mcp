@@ -41,3 +41,7 @@
 - OAuth DPoP (draft-ietf-oauth-dpop)
 - SAFE-AUTH Checklist: AUTH-003 (DPoP or mTLS binding)
 - Telemetry schema v1 + validators
+---
+Version: 1.0 • Date: 2025-08-16
+Changes: Initial DPoP gateway policy (sender-constrained tokens, replay cache, telemetry fields, deny conditions)
+Author: secretisgratitude
