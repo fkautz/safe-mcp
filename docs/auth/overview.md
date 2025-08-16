@@ -60,3 +60,5 @@ cat > docs/auth/checklist.md <<'EOF'
 - Telemetry: [Schema](./telemetry-schema.md) ·
   [Validators](./telemetry-validators.md) ·
   [Sample NDJSON](../../examples/telemetry/sample.ndjson)
+
+- JWKS Hygiene: see [docs/auth/jwks-hygiene.md](./docs/auth/jwks-hygiene.md), [alerts/jwks-hygiene.md](./alerts/jwks-hygiene.md), and [runbooks/jwks-rotation-sop.md](./runbooks/jwks-rotation-sop.md).
