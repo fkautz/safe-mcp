@@ -62,3 +62,5 @@ cat > docs/auth/checklist.md <<'EOF'
   [Sample NDJSON](../../examples/telemetry/sample.ndjson)
 
 - JWKS Hygiene: see [docs/auth/jwks-hygiene.md](./docs/auth/jwks-hygiene.md), [alerts/jwks-hygiene.md](./alerts/jwks-hygiene.md), and [runbooks/jwks-rotation-sop.md](./runbooks/jwks-rotation-sop.md).
+
+- DPoP policy & pseudo: see [docs/auth/dpop-policy.md](./docs/auth/dpop-policy.md) and [examples/gateway/](./examples/gateway).
