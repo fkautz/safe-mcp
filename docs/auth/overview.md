@@ -56,3 +56,7 @@ cat > docs/auth/checklist.md <<'EOF'
 | **SHOULD** | Deny on context loss | Fail-safe default |
 | **SHOULD** | Rate-limit auth endpoints | Abuse control |
 | **MAY** | PAR/JAR, CAEP, continuous eval | Hardening options |
+
+- Telemetry: [Schema](./telemetry-schema.md) ·
+  [Validators](./telemetry-validators.md) ·
+  [Sample NDJSON](../../examples/telemetry/sample.ndjson)
