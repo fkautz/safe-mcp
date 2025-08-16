@@ -10,3 +10,7 @@
 | Delegation drift (multi-hop) | **RFC 8693 Token Exchange** per hop; re-bind `aud` | Deny on missing `trace_id` / `aud` | Token Exchange config, hop-by-hop logs |
 | JWKS staleness / `kid` collision | **JWKS cache ≤15m**; rotation SOP; deny unknown `kid` | Overlap-period alerts | JWKS headers, rotation runbook, error logs |
 | Observability gap | **Structured telemetry on every tool call** | Centralized log routing | Field schema adoption, sample NDJSON |
+---
+Version: 1.0 • Date: 2025-08-16
+Changes: Initial SAFE-AUTH threat/control matrix + conformance template
+Author: secretisgratitude
