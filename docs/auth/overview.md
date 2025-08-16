@@ -64,3 +64,5 @@ cat > docs/auth/checklist.md <<'EOF'
 - JWKS Hygiene: see [docs/auth/jwks-hygiene.md](./docs/auth/jwks-hygiene.md), [alerts/jwks-hygiene.md](./alerts/jwks-hygiene.md), and [runbooks/jwks-rotation-sop.md](./runbooks/jwks-rotation-sop.md).
 
 - DPoP policy & pseudo: see [docs/auth/dpop-policy.md](./docs/auth/dpop-policy.md) and [examples/gateway/](./examples/gateway).
+
+- Rate-limit & abuse controls: see [docs/auth/abuse-controls.md](./docs/auth/abuse-controls.md) and [examples/gateway/](./examples/gateway).
