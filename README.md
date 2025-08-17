@@ -162,3 +162,5 @@ The SAFE-MCP framework defines 14 tactics that align with the MITRE ATT&CK metho
 ## Authentication
 
 See **[SAFE-AUTH for MCP](./docs/auth/overview.md)** for baseline flows and the MUST/SHOULD checklist.
+
+- [SAFE-M1001: Per-Hop Delegation Mitigations](./mitigations/SAFE-M1001-auth-delegation.md) — ensures every hop enforces audience + proof-of-possession checks
