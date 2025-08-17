@@ -33,5 +33,7 @@ jq -r .jti examples/telemetry/sample.n
 ### 3) Append a tiny “Validators” section to your existing schema (safe even if it already exists)
 ```bash
 printf "\n## Validators\nSee [telemetry-validators](./telemetry-validators.md) and [sample NDJSON](../../examples/telemetry/sample.ndjson).\n" >> docs/auth/telemetry-schema.md
-
-eof
+---
+Version: 1.0 • Date: 2025-08-17
+Changes: Initial telemetry schema & validator controls
+Author: secretisgratitude
