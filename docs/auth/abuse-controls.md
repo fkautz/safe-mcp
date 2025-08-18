@@ -75,3 +75,7 @@ if !buckets.per_tool.allow(tool_key) -> 429
 if !buckets.per_client.allow(client_key) -> 429
 
 // else allow; emit telemetry with rl_* fields
+---
+Version: 1.0 • Date: 2025-08-17
+Changes: Initial abuse controls — per-tool/client rate limits & backoff; pseudo + gateway examples
+Author: secretisgratitude
