@@ -1,0 +1,38 @@
+title: OAuth Token Persistence Detection - Unusual Token Usage
+id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+status: experimental
+description: Detects potential OAuth token persistence attacks through unusual token usage patterns
+author: SAFE-MCP Team
+date: 2025-01-15
+references:
+  - https://github.com/safe-mcp/techniques/SAFE-T1202
+logsource:
+  product: mcp
+  service: oauth_authentication
+detection:
+  selection:
+    event_type: "oauth_token_usage"
+    token_type: 
+      - "access_token"
+      - "refresh_token"
+  condition_unusual_usage:
+    - source_ip: "not in trusted_networks"
+    - user_agent: "unexpected"
+    - service_scope: "expanded"
+    - time_since_issue: ">24h"
+  condition_persistence:
+    - refresh_token_usage: "after_logout"
+    - cross_service_access: true
+    - token_replay: true
+  condition: selection and (condition_unusual_usage or condition_persistence)
+falsepositives:
+  - Legitimate cross-service integrations
+  - Mobile applications with changing IP addresses
+  - API clients accessing multiple services
+  - Development and testing environments
+level: high
+tags:
+  - attack.persistence
+  - attack.t1202
+  - safe.t1202
+  - oauth.token_persistence
